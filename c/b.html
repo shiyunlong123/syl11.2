@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <style>
+        button{
+            margin-left: 20px;
+        }
+        div{
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="aa"></div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url:"http://localhost:3000/a",
+            type:"GET",
+            success:function(e){
+                console.log(e);
+                var str='';
+                for(i in e){
+                    str+='<div><a>'+e[i].id+' : '+e[i].title+' : '+e[i].time+'</a></div>'
+                }
+                $('body').append(str);
+            }
+        });
+    })
+
+</script>
+</html>

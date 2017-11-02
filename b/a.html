@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <style>
+        button{
+            margin-left: 20px;
+        }
+        div{
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<input type="text" value="" class="inpOne"/><input type="text" value="" class="inpTwo"/><span class="btn">添加</span>
+<div class="aa"></div>
+<div class="bb"></div>
+</body>
+<script type="text/javascript">
+    $(function(){
+                $(".btn").click(function(){
+                    $.ajax({
+                        url:"http://localhost:3000/b",
+                        type:"POST",
+                        data:{
+                            "va":$(".inpOne").val(),
+                            "vb":$(".inpTwo").val()
+                        },
+                        success:function(e) {
+                            console.log(e);
+                            var str = '';
+                            str+='<div><a>'+e[e.length-1].id+':'+e[e.length-1].title+' : '+e[e.length-1].time+'</a></div>';
+                            $("body").append(str)
+                        }
+                    })
+                })
+    })
+
+</script>
+</html>
